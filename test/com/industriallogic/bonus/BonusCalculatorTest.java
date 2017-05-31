@@ -18,17 +18,17 @@ public class BonusCalculatorTest extends TestCase {
 
     public void testIndividualBonus() {
         BonusCalculator calc11000 = new BonusCalculator(12000, 11000, 10.0, 10.0, 1);
-        assertEquals(90.00, calc11000.individualBonus());
+        assertEquals("first", 90.00, calc11000.individualBonus());
 
         BonusCalculator calc12000 = new BonusCalculator(12000, 12000, 10.0, 10.0, 1);
-        //assertEquals(0.00, calc12000.individualBonus());
+        assertEquals("2nd", 0.00, calc12000.individualBonus());
 
         BonusCalculator calc15000 = new BonusCalculator(12000, 15000, 10.0, 10.0, 1);
-        //assertEquals(0.00, calc15000.individualBonus());
+        assertEquals("3rd", 0.00, calc15000.individualBonus());
     }
     public void testTeamBonus() {
         BonusCalculator teamCalc = new BonusCalculator(12000, 11000, 10.0, 0.0, 4);
-        //assertEquals(25.0, teamCalc.teamBonus());
+        assertEquals("4th", 25.0, teamCalc.teamBonus());
     }
 
 }
