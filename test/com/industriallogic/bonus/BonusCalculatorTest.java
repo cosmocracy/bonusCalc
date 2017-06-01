@@ -13,27 +13,27 @@ package com.industriallogic.bonus;
 import junit.framework.TestCase;
 
 public class BonusCalculatorTest extends TestCase {
-    // you may want to use "precision" (below) in your asserts...
-    // private static final double precision = 0.001;
 
-    public void testIndividualBonus() {
-        BonusCalculator calc11000 = new BonusCalculator(12000, 11000, 10.0, 10.0, 1);
-        assertEquals("first", 190.00, calc11000.individualBonus());
+    BonusCalculator calc;
 
-        BonusCalculator calc2 = new BonusCalculator(12000, 11000, 10.0, 10.0, 1);
-        assertEquals("second", 190.00, calc2.individualBonus());
-
-        BonusCalculator calc3 = new BonusCalculator(12000, 11000, 10.0, 10.0, 1);
-        assertEquals("third", 190.00, calc3.individualBonus());
+    protected void setUp() {
+        calc = new BonusCalculator();
     }
-    public void testTeamBonus() {
-        BonusCalculator teamCalc = new BonusCalculator(12000, 11000, 10.0, 0.0, 4);
-        assertEquals("4th", 20.0, teamCalc.teamBonus());
-
-        BonusCalculator teamCalc2 = new BonusCalculator(12000, 11000, 10.0, 0.0, 4);
-        assertEquals("5th", 20.0, teamCalc2.teamBonus());
+    public void testIndividualBonusTeamOfOne() {
+        assertEquals(90.00, calc.individualBonus(12000, 11000, 10.0, 10.0, 1));
     }
-
+    public void testIndividualBonusTeamOfMany() {
+        assertEquals(90.00, calc.individualBonus(12000, 11000, 10.0, 10.0, 5));
+    }
+    public void testTeamBonusTeamOfOne() {
+        assertEquals(100.0, calc.teamBonus(12000, 11000, 10.0, 1));
+    }
+    public void testTeamBonusTeamOfMany() {
+        assertEquals(25.0, calc.teamBonus(12000, 11000, 10.0, 4));
+    }
+    public void testTeamBonusNoTeam() {
+        assertEquals(0.0, calc.teamBonus(12000, 11000, 10.0, 0));
+    }
 }
 
 
