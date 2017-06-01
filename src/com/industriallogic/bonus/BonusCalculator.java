@@ -25,7 +25,10 @@ public class BonusCalculator {
         else
             return 0.0;
     }
-    //public double teamBonus(int sales, int quota, double commission, int numberOfTeamMembers);
+    //the stated objective is to use this method:
+    // public double teamBonus(int sales, int quota, double commission, int numberOfTeamMembers);
+    //but if I envoke it this way, it's silly.  just a bunch of redundant vars
+
     public double teamBonus(){
         if (sales>quota)
             return (sales - quota) * (commission/100) / numberOfTeamMembers;
